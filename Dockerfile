@@ -10,7 +10,7 @@ RUN apt-get -y update \
 
 ADD https://dl.google.com/android/repository/platform-tools-latest-linux.zip /tmp/platform-tools-latest-linux.zip
 ADD bash_profile /root/.bash_profile
-RUN mkdir -p /root/adb-fastboot 
+RUN mkdir -p /root/adb-fastboot \
 	&& cd /root/adb-fastboot \
 	&& unzip /tmp/platform-tools-latest-linux.zip
 
