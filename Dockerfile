@@ -13,8 +13,14 @@ RUN mkdir -p /root/adb-fastboot \
 	&& cd /root/adb-fastboot \
 	&& unzip /tmp/platform-tools-latest-linux.zip
 
-ADD bash_rc /root/bash_rc_add
-RUN cat /root/bash_rc_add >> /root/.bashrc
+#ADD bash_rc /root/bash_rc_add
+#RUN cat /root/bash_rc_add >> /root/.bashrc
+
+RUN echo '
+if [ -d "$HOME/adb-fastboot/platform-tools" ] ; then
+ export PATH="$HOME/adb-fastboot/platform-tools:$PATH"
+fi
+'  >> /root/.bashrc
 
 VOLUME [ "/dev/bus/usb", "/fastboot" ]
 WORKDIR /fastboot
