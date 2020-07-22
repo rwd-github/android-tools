@@ -16,10 +16,10 @@ RUN mkdir -p /root/adb-fastboot \
 #ADD bash_rc /root/bash_rc_add
 #RUN cat /root/bash_rc_add >> /root/.bashrc
 
-RUN echo '
-if [ -d "$HOME/adb-fastboot/platform-tools" ] ; then
- export PATH="$HOME/adb-fastboot/platform-tools:$PATH"
-fi
+RUN echo ' \
+if [ -d "$HOME/adb-fastboot/platform-tools" ] ; then \
+ export PATH="$HOME/adb-fastboot/platform-tools:$PATH" \
+fi \
 '  >> /root/.bashrc
 
 VOLUME [ "/dev/bus/usb", "/fastboot" ]
