@@ -1,6 +1,6 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
-RUN apt-get -y update \
+RUN apt-get -y update && apt-get upgrade -y \
     && apt-get -y install \
 		unzip \
 		bash \
@@ -9,10 +9,12 @@ RUN apt-get -y update \
 
 
 ADD https://dl.google.com/android/repository/platform-tools-latest-linux.zip /tmp/platform-tools-latest-linux.zip
-ADD bash_profile /root/.bash_profile
 RUN mkdir -p /root/adb-fastboot \
 	&& cd /root/adb-fastboot \
 	&& unzip /tmp/platform-tools-latest-linux.zip
+
+ADD bash_rc /root/bash_rc_add
+RUN cat /root/bash_rc_add >> /root/.bashrc
 
 VOLUME [ "/dev/bus/usb", "/fastboot" ]
 WORKDIR /fastboot
