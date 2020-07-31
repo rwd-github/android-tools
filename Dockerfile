@@ -5,6 +5,7 @@ RUN apt-get -y update && apt-get upgrade -y \
 		unzip \
 		bash \
 		usbutils \
+		mtp-tools \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
