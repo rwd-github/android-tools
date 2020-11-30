@@ -6,7 +6,6 @@ RUN apt-get -y update && apt-get upgrade -y \
 		bash \
 		usbutils \
 		mtp-tools \
-		heimdall-flash heimdall-flash-frontend tightvncserver \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
